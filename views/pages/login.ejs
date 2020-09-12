@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include ../partials/head %>
+  <%- include("../partials/head") %>
   <body>
-    <% include ../partials/header %>
-    <div class="container">
+    <div class="wrapper">
+    <%- include("../partials/header") %>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Email</label>
@@ -28,7 +28,9 @@
           </div>
         </div>
       </div>
-      <button class="button is-info">Login</button>
+      <div class="buttons is-centered">
+        <button class="button is-info">Login</button>
+      </div>
     </div>
     </div>
   </body>

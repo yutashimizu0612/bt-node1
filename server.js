@@ -11,4 +11,6 @@ app.get('/login', function (req, res) {
   res.render('pages/login');
 });
 
-app.listen(3000);
+app.listen(3000, function () {
+  console.log('Server is started.');
+});
