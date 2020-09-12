@@ -1,5 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <% include ../partials/head %>
-  <body></body>
+  <body>
+    <% include ../partials/header %>
+    <div class="container">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Email</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input" type="email" />
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Confirm Password</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input" type="password" />
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="button is-info">Login</button>
+    </div>
+    </div>
+  </body>
 </html>
