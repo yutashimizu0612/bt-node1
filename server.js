@@ -4,7 +4,11 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-  res.render('pages/index');
+  res.render('pages/index', { name: 'test' });
+});
+
+app.get('/register', function (req, res) {
+  res.render('pages/register');
 });
 
 app.get('/login', function (req, res) {
