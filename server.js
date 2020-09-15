@@ -1,11 +1,25 @@
 const express = require('express');
-const app = express();
+const session = require('express-session');
 const bcrypt = require('bcrypt');
+const app = express();
 
 const users = [];
+const SESSION_LIFETIME = 1000 * 60 * 60 * 2; // 2hours
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
+
+app.use(
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: SESSION_LIFETIME,
+      secure: false,
+    },
+  })
+);
 
 app.get('/', function (req, res) {
   res.render('pages/index', { name: 'test' });
