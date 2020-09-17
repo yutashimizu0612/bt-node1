@@ -21,9 +21,6 @@ app.use(
   })
 );
 
-// validation
-// Sessionでログイン状態を作る
-
 const redirectToLogin = (req, res, next) => {
   if (!req.session.user) {
     res.redirect('/login');
