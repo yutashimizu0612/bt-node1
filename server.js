@@ -39,7 +39,6 @@ const redirectToHome = (req, res, next) => {
 };
 
 app.get('/', redirectToLogin, function (req, res) {
-  console.log('トップ');
   res.render('pages/index', { name: req.session.user.name });
 });
 
@@ -47,6 +46,7 @@ app.get('/register', redirectToHome, function (req, res) {
   res.render('pages/register');
 });
 
+// ユーザ登録処理
 app.post(
   '/register',
   [
