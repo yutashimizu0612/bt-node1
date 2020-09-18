@@ -20,10 +20,10 @@
       <% } %>
       <!-- フォーム -->
       <% if (typeof values !== 'undefined') { %>
-        <% name = values.name !== 'undefined' ? values.name : '' %>
-        <% email = values.email !== 'undefined' ? values.email : '' %>
-        <% password = values.password !== 'undefined' ? values.password : '' %>
-        <% confirm_password = values.confirm_password !== 'undefined' ? values.confirm_password : '' %>
+        <% var name = values.name !== 'undefined' ? values.name : '' %>
+        <% var email = values.email !== 'undefined' ? values.email : '' %>
+        <% var password = values.password !== 'undefined' ? values.password : '' %>
+        <% var confirm_password = values.confirm_password !== 'undefined' ? values.confirm_password : '' %>
       <% } %>
       <form action="/register" method="post">
         <div class="field is-horizontal">
