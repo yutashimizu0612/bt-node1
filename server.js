@@ -86,7 +86,7 @@ app.post(
       password,
       confirm_password,
     };
-    // エラー
+    // バリデーションエラーの場合、エラー文と入力値を渡す
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render('pages/register', { values, errors: errors.array() });
