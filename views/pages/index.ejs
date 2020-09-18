@@ -3,7 +3,16 @@
   <%- include("../partials/head") %>
   <body>
     <div class="wrapper">
-      <%- include("../partials/header") %>
+      <nav class="navbar mb-6" role="navigation" aria-label="main navigation">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-light" href="/register">Register</a>
+              <a class="button is-light" href="#">Logout</a>
+            </div>
+          </div>
+        </div>
+      </nav>
       <p>ようこそ<%= name %>さん</p>
     </div>
   </body>
