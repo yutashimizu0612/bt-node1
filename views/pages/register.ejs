@@ -3,7 +3,21 @@
   <%- include("../partials/head") %>
   <body>
     <div class="wrapper">
+      <!-- header -->
       <%- include("../partials/header") %>
+      <!-- END header -->
+      <% if (typeof errors !== 'undefined') { %>
+      <!-- alert -->
+      <div class="mb-6">
+        <% errors.forEach(function (error) { %>
+        <div class="notification is-danger is-light">
+          <button class="delete"></button>
+          <%= error.msg %>
+        </div>
+        <% }); %>
+      </div>
+      <!-- END alert -->
+      <% } %>
       <form action="/register" method="post">
         <div class="field is-horizontal">
           <div class="field-label is-normal">
