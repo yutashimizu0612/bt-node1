@@ -39,7 +39,10 @@ const redirectToHome = (req, res, next) => {
 };
 
 app.get('/', redirectToLogin, function (req, res) {
-  res.render('pages/index', { name: req.session.user.name });
+  res.render('pages/index', {
+    id: req.session.user.id,
+    name: req.session.user.name,
+  });
 });
 
 app.get('/register', redirectToHome, function (req, res) {
@@ -49,6 +52,7 @@ app.get('/register', redirectToHome, function (req, res) {
 // ユーザ登録処理
 app.post(
   '/register',
+  // バリデーション
   [
     body('name').not().isEmpty().withMessage('名前は入力必須です'),
     body('email')
@@ -79,6 +83,7 @@ app.post(
     if (!errors.isEmpty()) {
       return res.render('pages/register', { errors: errors.array() });
     }
+    // ユーザ登録
     const { name, email, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 10);
     const newUser = {
