@@ -18,6 +18,13 @@
       </div>
       <!-- END alert -->
       <% } %>
+      <!-- フォーム -->
+      <% if (typeof values !== 'undefined') { %>
+        <% name = values.name !== 'undefined' ? values.name : '' %>
+        <% email = values.email !== 'undefined' ? values.email : '' %>
+        <% password = values.password !== 'undefined' ? values.password : '' %>
+        <% confirm_password = values.confirm_password !== 'undefined' ? values.confirm_password : '' %>
+      <% } %>
       <form action="/register" method="post">
         <div class="field is-horizontal">
           <div class="field-label is-normal">
@@ -26,7 +33,12 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" type="text" name="name" />
+                <input
+                  class="input"
+                  type="text"
+                  name="name"
+                  value="<%= name %>"
+                />
               </p>
             </div>
           </div>
@@ -38,7 +50,12 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" type="email" name="email" />
+                <input
+                  class="input"
+                  type="email"
+                  name="email"
+                  value="<%= email %>"
+                />
               </p>
             </div>
           </div>
@@ -50,7 +67,12 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" type="password" name="password" />
+                <input
+                  class="input"
+                  type="password"
+                  name="password"
+                  value="<%= password %>"
+                />
               </p>
             </div>
           </div>
@@ -62,7 +84,12 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" type="password" name="confirm_password" />
+                <input
+                  class="input"
+                  type="password"
+                  name="confirm_password"
+                  value="<%= confirm_password %>"
+                />
               </p>
             </div>
           </div>

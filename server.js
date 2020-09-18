@@ -70,7 +70,7 @@ app.post(
     body('confirm_password')
       .not()
       .isEmpty()
-      .withMessage('パスワードは入力必須です')
+      .withMessage('確認用パスワードは入力必須です')
       .custom((value, { req }) => {
         if (value !== req.body.password) {
           throw new Error('パスワードと確認用のパスワードが一致しません');
@@ -79,12 +79,19 @@ app.post(
       }),
   ],
   (req, res) => {
+    const { name, email, password, confirm_password } = req.body;
+    const values = {
+      name,
+      email,
+      password,
+      confirm_password,
+    };
+    // エラー
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.render('pages/register', { errors: errors.array() });
+      return res.render('pages/register', { values, errors: errors.array() });
     }
     // ユーザ登録
-    const { name, email, password } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 10);
     const newUser = {
       id: Date.now().toString(),
