@@ -53,7 +53,7 @@ app.get('/register', redirectToHome, function (req, res) {
 // ユーザ登録処理
 app.post(
   '/register',
-  validation.validateSignUpForm(),
+  validation.validateRegisterForm(),
   (req, res) => {
     const { name, email, password, confirm_password } = req.body;
     const values = {

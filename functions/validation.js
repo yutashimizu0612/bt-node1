@@ -1,6 +1,6 @@
 const { body } = require('express-validator');
 
-exports.validateSignUpForm = () => {
+exports.validateRegisterForm = () => {
   return [
     body('name').not().isEmpty().withMessage('名前は入力必須です'),
     body('email')
