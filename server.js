@@ -1,7 +1,8 @@
 const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
+const validation = require('./functions/validation');
 const app = express();
 
 const users = [];
@@ -52,32 +53,7 @@ app.get('/register', redirectToHome, function (req, res) {
 // ユーザ登録処理
 app.post(
   '/register',
-  // バリデーション
-  [
-    body('name').not().isEmpty().withMessage('名前は入力必須です'),
-    body('email')
-      .not()
-      .isEmpty()
-      .withMessage('メールアドレスは入力必須です')
-      .isEmail()
-      .withMessage('正しいメールアドレスを入力してください'),
-    body('password')
-      .not()
-      .isEmpty()
-      .withMessage('パスワードは入力必須です')
-      .isLength({ min: 7 })
-      .withMessage('7文字以上のパスワードを入力してください'),
-    body('confirm_password')
-      .not()
-      .isEmpty()
-      .withMessage('確認用パスワードは入力必須です')
-      .custom((value, { req }) => {
-        if (value !== req.body.password) {
-          throw new Error('パスワードと確認用のパスワードが一致しません');
-        }
-        return true;
-      }),
-  ],
+  validation.validateSignUpForm(),
   (req, res) => {
     const { name, email, password, confirm_password } = req.body;
     const values = {
