@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
+const server = require('../server');
 
-exports.register = async (req, res) => {
+exports.register = (req, res) => {
   const { name, email, password, confirm_password } = req.body;
   const values = {
     name,
@@ -22,5 +23,7 @@ exports.register = async (req, res) => {
     email,
     password: hashedPassword,
   };
-  return newUser;
+  server.users.push(newUser);
+  req.session.userId = newUser.id;
+  return server.users;
 }

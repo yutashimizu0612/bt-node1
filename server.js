@@ -4,7 +4,7 @@ const validation = require('./functions/validation');
 const auth = require('./controllers/auth');
 const app = express();
 
-const users = [{
+exports.users = [{
   id: '1120463234934',
   name: 'test1',
   email: 'test1@gmail.com',
@@ -59,10 +59,9 @@ app.get('/register', redirectToHome, function (req, res) {
 app.post(
   '/register',
   validation.validateRegisterForm(),
-  async (req, res) => {
-    const newUser = await auth.register(req, res);
-    users.push(newUser);
-    req.session.userId = newUser.id;
+  (req, res) => {
+    const newUsers = auth.register(req, res);
+    users = newUsers;
     res.redirect('/');
   }
 );
