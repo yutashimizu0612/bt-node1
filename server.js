@@ -1,11 +1,9 @@
 const express = require('express');
 const session = require('express-session');
-const bcrypt = require('bcrypt');
-const { validationResult } = require('express-validator');
 const validation = require('./functions/validation');
+const auth = require('./controllers/auth');
 const app = express();
 
-const users = [];
 const SESSION_LIFETIME = 1000 * 60 * 60 * 2; // 2hours
 
 app.set('view engine', 'ejs');
@@ -54,31 +52,7 @@ app.get('/register', redirectToHome, function (req, res) {
 app.post(
   '/register',
   validation.validateRegisterForm(),
-  (req, res) => {
-    const { name, email, password, confirm_password } = req.body;
-    const values = {
-      name,
-      email,
-      password,
-      confirm_password,
-    };
-    // バリデーションエラーの場合、エラー文と入力値を渡す
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.render('pages/register', { values, errors: errors.array() });
-    }
-    // ユーザ登録
-    const hashedPassword = bcrypt.hashSync(password, 10);
-    const newUser = {
-      id: Date.now().toString(),
-      name,
-      email,
-      password: hashedPassword,
-    };
-    users.push(newUser);
-    req.session.user = newUser;
-    res.redirect('/');
-  }
+  (req, res) => auth.register(req, res)
 );
 
 app.get('/login', redirectToHome, function (req, res) {
