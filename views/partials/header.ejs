@@ -2,8 +2,12 @@
   <div class="navbar-end">
     <div class="navbar-item">
       <div class="buttons">
-        <a class="button is-light" href="/">Register</a>
+        <a class="button is-light" href="/register">Register</a>
+        <% if (typeof id === 'undefined') { %>
         <a class="button is-light" href="/login">Login</a>
+        <% } else { %>
+        <a class="button is-light" href="#">Logout</a>
+        <% } %>
       </div>
     </div>
   </div>

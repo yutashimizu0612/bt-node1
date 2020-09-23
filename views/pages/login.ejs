@@ -3,34 +3,36 @@
   <%- include("../partials/head") %>
   <body>
     <div class="wrapper">
-    <%- include("../partials/header") %>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Email</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control">
-              <input class="input" type="email" />
-            </p>
+      <%- include("../partials/header") %>
+      <form action="/login" method="post">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Email</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <input class="input" type="email" name="email" />
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Password</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control">
-              <input class="input" type="password" />
-            </p>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Password</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <input class="input" type="password" name="password" />
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="buttons is-centered">
-        <button class="button is-info">Login</button>
-      </div>
+        <div class="buttons is-centered">
+          <button class="button is-info" type="submit">Login</button>
+        </div>
+      </form>
     </div>
     </div>
   </body>
